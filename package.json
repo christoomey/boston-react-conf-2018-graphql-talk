@@ -10,7 +10,8 @@
   "devDependencies": {
     "babel-preset-react-app": "^3.1.1",
     "babel-runtime": "^6.26.0",
-    "parcel-bundler": "^1.6.2"
+    "parcel-bundler": "^1.6.2",
+    "prettier": "^1.11.1"
   },
   "dependencies": {
     "react": "^16.2.0",
