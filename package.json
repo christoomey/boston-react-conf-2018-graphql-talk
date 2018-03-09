@@ -14,7 +14,14 @@
     "prettier": "^1.11.1"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.1.10",
+    "apollo-client": "^2.2.6",
+    "apollo-link-context": "^1.0.7",
+    "apollo-link-http": "^1.5.3",
+    "graphql": "^0.13.1",
+    "graphql-tag": "^2.8.0",
     "react": "^16.2.0",
+    "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0"
   }
 }
