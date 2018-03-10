@@ -10,7 +10,7 @@ import SearchPage from './components/SearchPage';
 const authLink = setContext((_, {headers}) => ({
   headers: {
     ...headers,
-    authorization: `Bearer <redacted>`,
+    authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
   },
 }));
 
