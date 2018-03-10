@@ -1,19 +1,17 @@
 import React from 'react';
-import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 
 const UserTile = ({user}) => (
   <li key={user.login}>
-    <img src={user.avatarUrl} width="20" />
+    <img src={user.avatarUrl} width="20" alt={`${user.login} avatar`} />
     <span>
       {user.login} {user.name !== '' && `(${user.name})`}
     </span>
   </li>
 );
 
-UserTile.fragmentName = 'UserParts';
 UserTile.fragment = gql`
-  fragment UserParts on User {
+  fragment UserTile on User {
     login
     name
     avatarUrl

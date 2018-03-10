@@ -5,11 +5,22 @@
   "author": "Chris Toomey <chris@ctoomey.com>",
   "license": "MIT",
   "scripts": {
-    "start": "export $(cat .env) && parcel src/index.html"
+    "start": "export $(cat .env) && parcel src/index.html",
+    "lint": "eslint src"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "babel-preset-react-app": "^3.1.1",
     "babel-runtime": "^6.26.0",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-graphql": "^1.5.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint_d": "^5.2.2",
     "parcel-bundler": "^1.6.2",
     "prettier": "^1.11.1"
   },

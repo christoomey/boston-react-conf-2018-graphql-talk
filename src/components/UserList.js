@@ -3,7 +3,7 @@ import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import UserTile from './UserTile';
 
-const UserList = ({username, data: {loading, search}}) =>
+const UserList = ({data: {loading, search}}) =>
   loading ? (
     <p>loading...</p>
   ) : (
@@ -16,7 +16,7 @@ const QUERY = gql`
   query UserSearch($username: String!) {
     search(first: 10, query: $username, type: USER) {
       nodes {
-        ...${UserTile.fragmentName}
+        ...UserTile
       }
     }
   }
