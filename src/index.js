@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {ApolloClient} from 'apollo-client';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {HttpLink} from 'apollo-link-http';
 import {setContext} from 'apollo-link-context';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import {ApolloProvider} from 'react-apollo';
-import SearchPage from './components/SearchPage';
+import SearchPage from './pages/SearchPage';
+import UserPage from './pages/UserPage';
 
 const authLink = setContext((_, {headers}) => ({
   headers: {
@@ -23,7 +25,13 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <SearchPage />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/users" component={SearchPage} />
+        <Route exact path="/users/:login" component={UserPage} />
+        <Redirect from="/" to="/users" />
+      </Switch>
+    </BrowserRouter>
   </ApolloProvider>
 );
 
