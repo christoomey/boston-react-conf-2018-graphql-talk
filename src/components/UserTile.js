@@ -15,6 +15,7 @@ const UserTile = ({user}) => (
 
 UserTile.fragment = gql`
   fragment UserTile on User {
+    id
     login
     name
     avatarUrl

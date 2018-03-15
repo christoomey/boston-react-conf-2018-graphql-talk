@@ -1,23 +1,21 @@
 import React from 'react';
-import {graphql} from 'react-apollo';
+import {graphql, compose} from 'react-apollo';
 import gql from 'graphql-tag';
+import withLoading from '../hocs/withLoading';
 import UserTile from './UserTile';
 
-const UserList = ({data: {loading, search, fetchMore}}) =>
-  loading ? (
-    <p>loading...</p>
-  ) : (
-    <div>
-      <ul>
-        {search.edges.map(({node: user}) => (
-          <UserTile key={user.login} user={user} />
-        ))}
-      </ul>
-      <button onClick={() => loadMoreResults(search.edges, fetchMore)}>
-        Load more
-      </button>
-    </div>
-  );
+const UserList = ({data: {search, fetchMore}}) => (
+  <div>
+    <ul>
+      {search.edges.map(({node: user}) => (
+        <UserTile key={user.login} user={user} />
+      ))}
+    </ul>
+    <button onClick={() => loadMoreResults(search.edges, fetchMore)}>
+      Load more
+    </button>
+  </div>
+);
 
 const loadMoreResults = (edges, fetchMore) => {
   const {cursor} = edges[edges.length - 1];
@@ -54,4 +52,6 @@ const withQuery = graphql(QUERY, {
   options: ({username}) => ({variables: {username}}),
 });
 
-export default withQuery(UserList);
+const enhanced = compose(withQuery, withLoading);
+
+export default enhanced(UserList);
