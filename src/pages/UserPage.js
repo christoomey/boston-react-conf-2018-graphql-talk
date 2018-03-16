@@ -11,10 +11,22 @@ const UserPage = ({data: {user}}) => (
       <img src={user.avatarUrl} width="75" alt={`${user.login} avatar`} />
       <h1>{user.login}</h1>
       <h2>{user.name || '(name not provided)'}</h2>
+      <p>{user.bio}</p>
     </header>
 
     <section>
-      <h3>Popular Repos:</h3>
+      <h3>Organizations</h3>
+      <ul>
+        {user.organizations.nodes.map(org => (
+          <li key={org.id}>
+            <img src={org.avatarUrl} width="75" alt={`${org.login} avatar`} />
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h3>Popular Repos</h3>
       <ul>
         {user.repositories.nodes.map(repo => (
           <Repo key={repo.id} repo={repo} />
@@ -31,10 +43,15 @@ const QUERY = gql`
     user(login: $login) {
       id
       name
+      bio
       login
       avatarUrl
 
-      repositories(first: 5, orderBy: {field: STARGAZERS, direction: DESC}) {
+      repositories(
+        first: 10
+        isFork: false
+        orderBy: {field: STARGAZERS, direction: DESC}
+      ) {
         nodes {
           ...Repo
         }
@@ -43,14 +60,8 @@ const QUERY = gql`
       organizations(first: 10) {
         nodes {
           id
+          name
           avatarUrl
-        }
-      }
-
-      gists(first: 5) {
-        nodes {
-          id
-          description
         }
       }
     }
