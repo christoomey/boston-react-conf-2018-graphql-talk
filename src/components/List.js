@@ -1,7 +1,12 @@
 import React from 'react';
 
-const List = ({items, component: Component}) => (
-  <ul>{items.map(item => <Component key={item.id} org={item} />)}</ul>
+const List = ({items, itemKey, component: Component}) => (
+  <ul>
+    {items.map(item => {
+      const itemKeyProp = {[itemKey]: item};
+      return <Component key={item.id} {...itemKeyProp} />;
+    })}
+  </ul>
 );
 
 export default List;

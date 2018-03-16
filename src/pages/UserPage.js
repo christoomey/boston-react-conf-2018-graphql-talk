@@ -14,17 +14,12 @@ const UserPage = ({data: {user}}) => (
     <UserHeader user={user} />
 
     <Card title="Organizations">
-      <List items={user.organizations.nodes} component={Org} />
+      <List items={user.organizations.nodes} itemKey="org" component={Org} />
     </Card>
 
-    <section>
-      <h3>Popular Repos</h3>
-      <ul>
-        {user.repositories.nodes.map(repo => (
-          <Repo key={repo.id} repo={repo} />
-        ))}
-      </ul>
-    </section>
+    <Card title="Popular Repos">
+      <List items={user.repositories.nodes} itemKey="repo" component={Repo} />
+    </Card>
 
     <Link to="/users">back to users list</Link>
   </div>
