@@ -5,15 +5,11 @@ import {Link} from 'react-router-dom';
 import withLoading from '../hocs/withLoading';
 import Repo, {REPO_FRAGMENT} from '../components/Repo';
 import Org, {ORG_FRAGMENT} from '../components/Org';
+import UserHeader, {USER_HEADER_FRAGMENT} from '../components/UserHeader';
 
 const UserPage = ({data: {user}}) => (
   <div>
-    <header>
-      <img src={user.avatarUrl} width="75" alt={`${user.login} avatar`} />
-      <h1>{user.login}</h1>
-      <h2>{user.name || '(name not provided)'}</h2>
-      <p>{user.bio}</p>
-    </header>
+    <UserHeader user={user} />
 
     <section>
       <h3>Organizations</h3>
@@ -40,11 +36,7 @@ const UserPage = ({data: {user}}) => (
 const QUERY = gql`
   query UserQuery($login: String!) {
     user(login: $login) {
-      id
-      name
-      bio
-      login
-      avatarUrl
+      ...UserHeader
 
       repositories(
         first: 10
@@ -64,6 +56,7 @@ const QUERY = gql`
     }
   }
 
+  ${USER_HEADER_FRAGMENT}
   ${REPO_FRAGMENT}
   ${ORG_FRAGMENT}
 `;
