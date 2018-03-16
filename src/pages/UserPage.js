@@ -3,6 +3,8 @@ import {graphql, compose} from 'react-apollo';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
 import withLoading from '../hocs/withLoading';
+import Card from '../components/Card';
+import List from '../components/List';
 import Repo, {REPO_FRAGMENT} from '../components/Repo';
 import Org, {ORG_FRAGMENT} from '../components/Org';
 import UserHeader, {USER_HEADER_FRAGMENT} from '../components/UserHeader';
@@ -11,14 +13,9 @@ const UserPage = ({data: {user}}) => (
   <div>
     <UserHeader user={user} />
 
-    <section>
-      <h3>Organizations</h3>
-      <ul>
-        {user.organizations.nodes.map(org => (
-          <Org key={org.id} org={org} />
-        ))}
-      </ul>
-    </section>
+    <Card title="Organizations">
+      <List items={user.organizations.nodes} component={Org} />
+    </Card>
 
     <section>
       <h3>Popular Repos</h3>
