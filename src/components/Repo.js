@@ -10,13 +10,9 @@ const Repo = ({repo, starMutation, unstarMutation}) => (
     </h4>
     <p>
       {repo.viewerHasStarred ? (
-        <button onClick={() => unstarMutation({variables: {repoId: repo.id}})}>
-          UnStar
-        </button>
+        <ToggleStarButton mutation={unstarMutation} repo={repo} text="UnStar" />
       ) : (
-        <button onClick={() => starMutation({variables: {repoId: repo.id}})}>
-          Star
-        </button>
+        <ToggleStarButton mutation={starMutation} repo={repo} text="Star" />
       )}
     </p>
     <p>{repo.description}</p>
@@ -26,6 +22,12 @@ const Repo = ({repo, starMutation, unstarMutation}) => (
       <span> - {repo.stargazers.totalCount}</span>
     </div>
   </li>
+);
+
+const ToggleStarButton = ({mutation, repo, text}) => (
+  <button onClick={() => mutation({variables: {repoId: repo.id}})}>
+    {text}
+  </button>
 );
 
 export const REPO_FRAGMENT = gql`
