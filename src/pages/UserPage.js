@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
 import withLoading from '../hocs/withLoading';
 import Repo, {REPO_FRAGMENT} from '../components/Repo';
+import Org, {ORG_FRAGMENT} from '../components/Org';
 
 const UserPage = ({data: {user}}) => (
   <div>
@@ -18,9 +19,7 @@ const UserPage = ({data: {user}}) => (
       <h3>Organizations</h3>
       <ul>
         {user.organizations.nodes.map(org => (
-          <li key={org.id}>
-            <img src={org.avatarUrl} width="75" alt={`${org.login} avatar`} />
-          </li>
+          <Org key={org.id} org={org} />
         ))}
       </ul>
     </section>
@@ -59,15 +58,14 @@ const QUERY = gql`
 
       organizations(first: 10) {
         nodes {
-          id
-          name
-          avatarUrl
+          ...Org
         }
       }
     }
   }
 
   ${REPO_FRAGMENT}
+  ${ORG_FRAGMENT}
 `;
 
 const withQuery = graphql(QUERY, {
