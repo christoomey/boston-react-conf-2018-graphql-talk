@@ -4,30 +4,28 @@ import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
 import withLoading from '../hocs/withLoading';
 import CardList from '../components/CardList';
+import Page from '../components/Page';
 import Repo, {REPO_FRAGMENT} from '../components/Repo';
 import Org, {ORG_FRAGMENT} from '../components/Org';
 import UserHeader, {USER_HEADER_FRAGMENT} from '../components/UserHeader';
 
 const UserPage = ({data: {user}}) => (
-  <div>
+  <Page>
     <UserHeader user={user} />
-
     <CardList
       title="Organizations"
       itemKey="org"
       items={user.organizations.nodes}
       component={Org}
     />
-
     <CardList
       title="Popular Repos"
       itemKey="repo"
       items={user.repositories.nodes}
       component={Repo}
     />
-
     <Link to="/users">back to users list</Link>
-  </div>
+  </Page>
 );
 
 const QUERY = gql`

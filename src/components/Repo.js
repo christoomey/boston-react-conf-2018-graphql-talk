@@ -1,5 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
+import Language, {LANGUAGE_FRAGMENT} from './Language'
 
 const Repo = ({repo}) => (
   <li key={repo.id}>
@@ -8,9 +9,7 @@ const Repo = ({repo}) => (
     </h4>
     <p>{repo.description}</p>
     <div>
-      <span style={{color: repo.primaryLanguage.color}}>
-        {repo.primaryLanguage.name}
-      </span>
+      <Language language={repo.primaryLanguage} />
       <span> - {repo.forkCount}</span>
       <span> - {repo.stargazers.totalCount}</span>
     </div>
@@ -29,11 +28,11 @@ export const REPO_FRAGMENT = gql`
       totalCount
     }
     primaryLanguage {
-      id
-      name
-      color
+      ...Language
     }
   }
+
+  ${LANGUAGE_FRAGMENT}
 `;
 
 export default Repo;
