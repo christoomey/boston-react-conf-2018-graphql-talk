@@ -13,8 +13,8 @@ const UserTile = ({user}) => (
   </li>
 );
 
-UserTile.fragment = gql`
-  fragment UserTile on User {
+export const USER_TILE_FRAGMENT = gql`
+  fragment userTile on User {
     id
     login
     name

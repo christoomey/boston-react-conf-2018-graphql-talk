@@ -17,6 +17,24 @@ const UserList = ({data: {search, fetchMore}}) => (
   </div>
 );
 
+const QUERY = gql`
+  query UserSearch($username: String!, $cursor: String) {
+    search(first: 10, query: $username, type: USER, after: $cursor) {
+      edges {
+        cursor
+        node {
+          ... on User {
+            id
+            login
+            name
+            avatarUrl
+          }
+        }
+      }
+    }
+  }
+`;
+
 const loadMoreResults = (edges, fetchMore) => {
   const {cursor} = edges[edges.length - 1];
   fetchMore({
@@ -32,21 +50,6 @@ const loadMoreResults = (edges, fetchMore) => {
     }),
   });
 };
-
-const QUERY = gql`
-  query UserSearch($username: String!, $cursor: String) {
-    search(first: 10, query: $username, type: USER, after: $cursor) {
-      edges {
-        cursor
-        node {
-          ...UserTile
-        }
-      }
-    }
-  }
-
-  ${UserTile.fragment}
-`;
 
 const withQuery = graphql(QUERY, {
   options: ({username}) => ({variables: {username}}),
