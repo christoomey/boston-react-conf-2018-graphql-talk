@@ -1,6 +1,5 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import {Link} from 'react-router-dom';
 import DefaultQuery from '../components/DefaultQuery';
 import CardList from '../components/CardList';
 import Page from '../components/Page';
@@ -25,7 +24,6 @@ const UserPage = ({match: {params: {login}}}) => (
           items={user.repositories.nodes}
           component={Repo}
         />
-        <Link to="/users">back to users list</Link>
       </Page>
     )}
   </DefaultQuery>

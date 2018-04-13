@@ -1,16 +1,12 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import Language, {LANGUAGE_FRAGMENT} from './Language';
 import RepoHeader, {REPO_HEADER_FRAGMENT} from './RepoHeader';
+import RepoStats, {REPO_STATS_FRAGMENT} from './RepoStats';
 
 const Repo = ({repo}) => (
   <li>
     <RepoHeader repo={repo} />
-    <div>
-      <Language language={repo.primaryLanguage} />
-      <span> - {repo.forkCount}</span>
-      <span> - {repo.stargazers.totalCount}</span>
-    </div>
+    <RepoStats repo={repo} />
   </li>
 );
 
@@ -18,16 +14,10 @@ export const REPO_FRAGMENT = gql`
   fragment Repo on Repository {
     id
     ...RepoHeader
-    forkCount
-    stargazers {
-      totalCount
-    }
-    primaryLanguage {
-      ...Language
-    }
+    ...RepoStats
   }
 
-  ${LANGUAGE_FRAGMENT}
+  ${REPO_STATS_FRAGMENT}
   ${REPO_HEADER_FRAGMENT}
 `;
 
