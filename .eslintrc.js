@@ -93,6 +93,7 @@ module.exports = {
     'no-extra-bind': 'error',
     'no-implicit-globals': 'error',
     'no-use-before-define': 'off',
+    'no-underscore-dangle': 'off',
     'prefer-promise-reject-errors': 'error',
     'react/jsx-key': 'error',
     'react/jsx-filename-extension': 'off',

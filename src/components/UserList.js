@@ -1,20 +1,21 @@
 import React from 'react';
-import {graphql, compose} from 'react-apollo';
 import gql from 'graphql-tag';
-import withLoading from '../hocs/withLoading';
+import DefaultQuery from './DefaultQuery';
 import UserTile from './UserTile';
 
-const UserList = ({data: {search, fetchMore}}) => (
-  <div>
-    <ul>
-      {search.edges.map(({node: user}) => (
-        <UserTile key={user.login} user={user} />
-      ))}
-    </ul>
-    <button onClick={() => loadMoreResults(search.edges, fetchMore)}>
-      Load more
-    </button>
-  </div>
+const UserList = ({username}) => (
+  <DefaultQuery query={QUERY} variables={{username}}>
+    {({data: {search}, fetchMore}) => (
+      <div>
+        <ul>
+          {search.edges.map(({node: user}) => (
+            <UserTile key={user.login} user={user} />
+          ))}
+        </ul>
+        <LoadMoreButton edges={search.edges} fetchMore={fetchMore} />
+      </div>
+    )}
+  </DefaultQuery>
 );
 
 const QUERY = gql`
@@ -35,6 +36,10 @@ const QUERY = gql`
   }
 `;
 
+const LoadMoreButton = ({edges, fetchMore}) => (
+  <button onClick={() => loadMoreResults(edges, fetchMore)}>Load more</button>
+);
+
 const loadMoreResults = (edges, fetchMore) => {
   const {cursor} = edges[edges.length - 1];
   fetchMore({
@@ -42,6 +47,7 @@ const loadMoreResults = (edges, fetchMore) => {
     updateQuery: (previousResult, {fetchMoreResult}) => ({
       ...previousResult,
       search: {
+        __typename: previousResult.search.__typename,
         edges: [
           ...previousResult.search.edges,
           ...fetchMoreResult.search.edges,
@@ -51,10 +57,4 @@ const loadMoreResults = (edges, fetchMore) => {
   });
 };
 
-const withQuery = graphql(QUERY, {
-  options: ({username}) => ({variables: {username}}),
-});
-
-const enhanced = compose(withQuery, withLoading);
-
-export default enhanced(UserList);
+export default UserList;
