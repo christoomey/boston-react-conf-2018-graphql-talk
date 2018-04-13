@@ -3,8 +3,8 @@ import gql from 'graphql-tag';
 import DefaultQuery from './DefaultQuery';
 import UserTile from './UserTile';
 
-const UserList = ({username}) => (
-  <DefaultQuery query={QUERY} variables={{username}}>
+const UserList = ({login}) => (
+  <DefaultQuery query={QUERY} variables={{login}}>
     {({data: {search}, fetchMore}) => (
       <div>
         <ul>
@@ -19,8 +19,8 @@ const UserList = ({username}) => (
 );
 
 const QUERY = gql`
-  query UserSearch($username: String!, $cursor: String) {
-    search(first: 10, query: $username, type: USER, after: $cursor) {
+  query UserSearch($login: String!, $cursor: String) {
+    search(first: 10, query: $login, type: USER, after: $cursor) {
       edges {
         cursor
         node {

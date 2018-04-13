@@ -17,7 +17,7 @@ class SearchPage extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="login" />
         </form>
-        <UserList username={this.state.login} />
+        <UserList login={this.state.login} />
       </div>
     );
   }
