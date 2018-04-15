@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import gql from 'graphql-tag';
 
 const UserTile = ({user}) => (
-  <li key={user.login}>
+  <li>
     <Link to={`/users/${user.login}`}>
       <img src={user.avatarUrl} width="20" alt={`${user.login} avatar`} />
       <span>

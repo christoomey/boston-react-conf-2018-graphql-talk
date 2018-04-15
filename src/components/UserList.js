@@ -9,7 +9,7 @@ const UserList = ({login}) => (
       <div>
         <ul>
           {search.edges.map(({node: user}) => (
-            <UserTile key={user.login} user={user} />
+            <UserTile key={user.id} user={user} />
           ))}
         </ul>
         <LoadMoreButton edges={search.edges} fetchMore={fetchMore} />
