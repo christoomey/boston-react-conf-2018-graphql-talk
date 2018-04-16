@@ -1,9 +1,10 @@
-import React from 'react';
+import styled from 'styled-components';
+import {spacing} from '../styles';
 
-const Page = ({children}) => (
-  <main>
-    {children}
-  </main>
-);
+const Page = styled.main`
+  background: white;
+  margin: ${spacing.large} auto;
+  max-width: 650px;
+`;
 
 export default Page;

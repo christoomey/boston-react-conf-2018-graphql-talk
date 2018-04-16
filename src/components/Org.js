@@ -1,10 +1,9 @@
 import React from 'react';
 import gql from 'graphql-tag';
+import Avatar from './Avatar';
 
 const Org = ({org}) => (
-  <li>
-    <img src={org.avatarUrl} width="75" alt={`${org.login} avatar`} />
-  </li>
+  <Avatar small src={org.avatarUrl} alt={`${org.login} avatar`} />
 );
 
 export const ORG_FRAGMENT = gql`

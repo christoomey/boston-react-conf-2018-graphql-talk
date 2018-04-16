@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
-import SearchPage from './pages/SearchPage';
-import UserPage from './pages/UserPage';
+import {SearchPage, UserPage} from './pages';
 
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',

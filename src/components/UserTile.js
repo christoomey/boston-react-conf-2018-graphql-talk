@@ -1,16 +1,23 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import gql from 'graphql-tag';
+import Avatar from './Avatar';
+import {Column, Row} from './Flex';
+import {Title, Subtitle} from './Headings';
+import UnstyledLink from './UnstyledLink';
+import Tile from './Tile';
 
 const UserTile = ({user}) => (
-  <li>
-    <Link to={`/users/${user.login}`}>
-      <img src={user.avatarUrl} width="20" alt={`${user.login} avatar`} />
-      <span>
-        {user.login} {user.name !== '' && `(${user.name})`}
-      </span>
-    </Link>
-  </li>
+  <UnstyledLink to={`/users/${user.login}`}>
+    <Tile>
+      <Row>
+        <Avatar small src={user.avatarUrl} alt={`${user.login} avatar`} />
+        <Column>
+          <Title>{user.login}</Title>
+          <Subtitle>{user.name !== '' && `(${user.name})`}</Subtitle>
+        </Column>
+      </Row>
+    </Tile>
+  </UnstyledLink>
 );
 
 export const USER_TILE_FRAGMENT = gql`

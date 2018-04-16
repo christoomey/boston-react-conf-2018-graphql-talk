@@ -1,6 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import {Mutation} from 'react-apollo';
+import styled from 'styled-components';
 
 const ToggleStarButton = ({repo}) =>
   repo.viewerHasStarred ? (
@@ -12,9 +13,9 @@ const ToggleStarButton = ({repo}) =>
 const BaseToggleButton = ({mutation, repo, title}) => (
   <Mutation mutation={mutation} variables={{repoId: repo.id}}>
     {(triggerMutation, {loading}) => (
-      <button onClick={triggerMutation} disabled={loading}>
+      <StyledButton onClick={triggerMutation} disabled={loading}>
         {title}
-      </button>
+      </StyledButton>
     )}
   </Mutation>
 );
@@ -50,5 +51,9 @@ const UNSTAR_MUTATION = gql`
   }
   ${TOGGLE_STAR_FRAGMENT}
 `;
+
+const StyledButton = styled.button`
+  background-color: #ddd;
+`
 
 export default ToggleStarButton;
