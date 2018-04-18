@@ -6,9 +6,15 @@
   "license": "MIT",
   "scripts": {
     "start": "export $(cat .env) && parcel src/index.html",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "gql:schema":
+      "apollo-codegen introspect-schema https://api.github.com/graphql --output src/gqlSchema.json --header \"Authorization: Bearer $(cat .env | grep GITHUB_TOKEN | cut -d '=' -f 2)\"",
+    "gql:types":
+      "apollo-codegen generate src/**/*.js --schema src/gqlSchema.json --target typescript --output src/gqlTypes.ts",
+    "gql:full": "yarn run gql:schema && yarn run gql:types"
   },
   "devDependencies": {
+    "apollo-codegen": "^0.19.1",
     "babel-eslint": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-react-app": "^3.1.1",

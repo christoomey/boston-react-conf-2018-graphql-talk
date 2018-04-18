@@ -42,7 +42,7 @@ const STAR_MUTATION = gql`
 `;
 
 const UNSTAR_MUTATION = gql`
-  mutation StarRepo($repoId: ID!) {
+  mutation UnstarRepo($repoId: ID!) {
     removeStar(input: {starrableId: $repoId}) {
       starrable {
         ...ToggleStar
@@ -54,6 +54,6 @@ const UNSTAR_MUTATION = gql`
 
 const StyledButton = styled.button`
   background-color: #ddd;
-`
+`;
 
 export default ToggleStarButton;
