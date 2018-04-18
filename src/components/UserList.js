@@ -28,13 +28,16 @@ const QUERY = gql`
       edges {
         cursor
         node {
-          ...userTile
+          ... on User {
+            id
+            login
+            name
+            avatarUrl
+          }
         }
       }
     }
   }
-
-  ${USER_TILE_FRAGMENT}
 `;
 
 const LoadMoreButton = ({edges, fetchMore}) => (
