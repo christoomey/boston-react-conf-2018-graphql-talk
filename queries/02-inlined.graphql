@@ -1,0 +1,38 @@
+query UserQuery($login: String!) {
+  user(login: $login) {
+    id
+    name
+    bio
+    login
+    avatarUrl
+    repositories(
+      first: 10
+      isFork: false
+      orderBy: {field: STARGAZERS, direction: DESC}
+    ) {
+      nodes {
+        id
+        url
+        name
+        description
+        viewerHasStarred
+        forkCount
+        stargazers {
+          totalCount
+        }
+        primaryLanguage {
+          id
+          name
+          color
+        }
+      }
+    }
+    organizations(first: 10) {
+      nodes {
+        id
+        name
+        avatarUrl
+      }
+    }
+  }
+}

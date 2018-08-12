@@ -1,0 +1,10 @@
+curl https://api.github.com/users/christoomey > queries/rest/user.json
+curl https://api.github.com/users/christoomey/orgs > queries/rest/orgs.json
+curl https://api.github.com/users/christoomey/repos > queries/rest/repos.json
+
+/users/christoomey/repositories (Doesn't have a popularity filter)
+
+Can't actually get the color info for languages, so we need to store it locally
+
+8kB - GQL total
+175kB - combined REST examples

@@ -1,0 +1,16 @@
+[
+  {
+    "login": "thoughtbot",
+    "id": 6183,
+    "node_id": "MDEyOk9yZ2FuaXphdGlvbjYxODM=",
+    "url": "https://api.github.com/orgs/thoughtbot",
+    "repos_url": "https://api.github.com/orgs/thoughtbot/repos",
+    "events_url": "https://api.github.com/orgs/thoughtbot/events",
+    "hooks_url": "https://api.github.com/orgs/thoughtbot/hooks",
+    "issues_url": "https://api.github.com/orgs/thoughtbot/issues",
+    "members_url": "https://api.github.com/orgs/thoughtbot/members{/member}",
+    "public_members_url": "https://api.github.com/orgs/thoughtbot/public_members{/member}",
+    "avatar_url": "https://avatars3.githubusercontent.com/u/6183?v=4",
+    "description": ""
+  }
+]
