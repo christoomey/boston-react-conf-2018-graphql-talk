@@ -1,7 +1,8 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import DefaultQuery from './DefaultQuery';
-import UserTile, {USER_TILE_FRAGMENT} from './UserTile'; //eslint-disable-line
+import UserTile from './UserTile';
+import LoadMoreButton from './LoadMoreButton';
 import Grid from './Grid';
 
 const UserList = ({login}) => (
@@ -9,9 +10,7 @@ const UserList = ({login}) => (
     {({data: {search}, fetchMore, loading}) => (
       <div>
         <Grid columns={3}>
-          {search.edges.map(({node: user}) => (
-            <UserTile key={user.id} user={user} />
-          ))}
+          {search.edges.map(({user}) => <UserTile key={user.id} user={user} />)}
         </Grid>
 
         {loading || (
@@ -27,38 +26,14 @@ const QUERY = gql`
     search(first: 12, query: $login, type: USER, after: $cursor) {
       edges {
         cursor
-        node {
-          ... on User {
-            id
-            login
-            name
-            avatarUrl
-          }
+        user: node {
+          ...UserTile
         }
       }
     }
   }
+
+  ${UserTile.fragment}
 `;
-
-const LoadMoreButton = ({edges, fetchMore}) => (
-  <button onClick={() => loadMoreResults(edges, fetchMore)}>Load more</button>
-);
-
-const loadMoreResults = (edges, fetchMore) => {
-  const {cursor} = edges[edges.length - 1];
-  fetchMore({
-    variables: {cursor},
-    updateQuery: (previousResult, {fetchMoreResult}) => ({
-      ...previousResult,
-      search: {
-        __typename: previousResult.search.__typename,
-        edges: [
-          ...previousResult.search.edges,
-          ...fetchMoreResult.search.edges,
-        ],
-      },
-    }),
-  });
-};
 
 export default UserList;

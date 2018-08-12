@@ -2,8 +2,8 @@ import React from 'react';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import {spacing} from '../styles';
-import RepoHeader, {REPO_HEADER_FRAGMENT} from './RepoHeader';
-import RepoStats, {REPO_STATS_FRAGMENT} from './RepoStats';
+import RepoHeader from './RepoHeader';
+import RepoStats from './RepoStats';
 import Tile from './Tile';
 import {Column} from './Flex';
 
@@ -16,23 +16,23 @@ const Repo = ({repo}) => (
   </PaddedTile>
 );
 
-export const REPO_FRAGMENT = gql`
+Repo.fragment = gql`
   fragment Repo on Repository {
     id
     ...RepoHeader
     ...RepoStats
   }
 
-  ${REPO_STATS_FRAGMENT}
-  ${REPO_HEADER_FRAGMENT}
+  ${RepoStats.fragment}
+  ${RepoHeader.fragment}
 `;
 
 const PaddedTile = styled(Tile)`
   padding: ${spacing.small};
-`
+`;
 
 const FullHeightColumn = styled(Column)`
   height: 100%;
-`
+`;
 
 export default Repo;

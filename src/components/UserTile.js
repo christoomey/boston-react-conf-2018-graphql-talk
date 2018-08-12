@@ -20,8 +20,8 @@ const UserTile = ({user}) => (
   </UnstyledLink>
 );
 
-export const USER_TILE_FRAGMENT = gql`
-  fragment userTile on User {
+UserTile.fragment = gql`
+  fragment UserTile on User {
     id
     login
     name

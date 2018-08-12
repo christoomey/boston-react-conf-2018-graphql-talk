@@ -20,8 +20,8 @@ const BaseToggleButton = ({mutation, repo, title}) => (
   </Mutation>
 );
 
-export const TOGGLE_STAR_FRAGMENT = gql`
-  fragment ToggleStar on Repository {
+ToggleStarButton.fragment = gql`
+  fragment ToggleStarButton on Repository {
     id
     viewerHasStarred
     stargazers {
@@ -34,22 +34,22 @@ const STAR_MUTATION = gql`
   mutation StarRepo($repoId: ID!) {
     addStar(input: {starrableId: $repoId}) {
       starrable {
-        ...ToggleStar
+        ...ToggleStarButton
       }
     }
   }
-  ${TOGGLE_STAR_FRAGMENT}
+  ${ToggleStarButton.fragment}
 `;
 
 const UNSTAR_MUTATION = gql`
   mutation UnstarRepo($repoId: ID!) {
     removeStar(input: {starrableId: $repoId}) {
       starrable {
-        ...ToggleStar
+        ...ToggleStarButton
       }
     }
   }
-  ${TOGGLE_STAR_FRAGMENT}
+  ${ToggleStarButton.fragment}
 `;
 
 const StyledButton = styled.button`

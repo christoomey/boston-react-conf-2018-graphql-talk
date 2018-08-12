@@ -2,7 +2,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import {RepoForkedIcon, StarIcon} from 'react-octicons';
-import Language, {LANGUAGE_FRAGMENT} from './Language';
+import Language from './Language';
 import {Row} from './Flex';
 
 const RepoStats = ({repo}) => (
@@ -19,7 +19,7 @@ const RepoStats = ({repo}) => (
   </Row>
 );
 
-export const REPO_STATS_FRAGMENT = gql`
+RepoStats.fragment = gql`
   fragment RepoStats on Repository {
     id
     forkCount
@@ -31,7 +31,7 @@ export const REPO_STATS_FRAGMENT = gql`
     }
   }
 
-  ${LANGUAGE_FRAGMENT}
+  ${Language.fragment}
 `;
 
 const PaddedIcon = ({icon: Icon}) => (

@@ -1,7 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
-import ToggleStarButton, {TOGGLE_STAR_FRAGMENT} from './ToggleStarButton';
+import ToggleStarButton from './ToggleStarButton';
 import {Row} from './Flex';
 
 const RepoHeader = ({repo}) => (
@@ -14,15 +14,15 @@ const RepoHeader = ({repo}) => (
   </div>
 );
 
-export const REPO_HEADER_FRAGMENT = gql`
+RepoHeader.fragment = gql`
   fragment RepoHeader on Repository {
     id
     url
     name
     description
-    ...ToggleStar
+    ...ToggleStarButton
   }
-  ${TOGGLE_STAR_FRAGMENT}
+  ${ToggleStarButton.fragment}
 `;
 
 const TitleLink = styled.a`
@@ -30,6 +30,6 @@ const TitleLink = styled.a`
   text-decoration: none;
   font-size: 1.25em;
   font-weight: 550;
-`
+`;
 
 export default RepoHeader;

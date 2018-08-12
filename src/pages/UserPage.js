@@ -2,9 +2,9 @@ import React from 'react';
 import gql from 'graphql-tag';
 import DefaultQuery from '../components/DefaultQuery';
 import Page from '../components/Page';
-import Repo, {REPO_FRAGMENT} from '../components/Repo';
-import Org, {ORG_FRAGMENT} from '../components/Org';
-import UserHeader, {USER_HEADER_FRAGMENT} from '../components/UserHeader';
+import Repo from '../components/Repo';
+import Org from '../components/Org';
+import UserHeader from '../components/UserHeader';
 import {Row} from '../components/Flex';
 import Grid from '../components/Grid';
 
@@ -17,7 +17,9 @@ const UserPage = ({match: {params: {login}}}) => (
           {user.organizations.nodes.map(org => <Org key={org.id} org={org} />)}
         </Row>
         <Grid columns={2}>
-          {user.repositories.nodes.map(repo => <Repo key={repo.id} repo={repo} />)}
+          {user.repositories.nodes.map(repo => (
+            <Repo key={repo.id} repo={repo} />
+          ))}
         </Grid>
       </Page>
     )}
@@ -47,9 +49,9 @@ const QUERY = gql`
     }
   }
 
-  ${USER_HEADER_FRAGMENT}
-  ${REPO_FRAGMENT}
-  ${ORG_FRAGMENT}
+  ${UserHeader.fragment}
+  ${Repo.fragment}
+  ${Org.fragment}
 `;
 
 export default UserPage;

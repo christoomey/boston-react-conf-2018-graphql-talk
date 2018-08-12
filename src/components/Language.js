@@ -9,7 +9,7 @@ const Language = ({language}) => (
   </span>
 );
 
-export const LANGUAGE_FRAGMENT = gql`
+Language.fragment = gql`
   fragment Language on Language {
     id
     name
@@ -24,6 +24,6 @@ const Circle = styled.span`
   height: 0.75em;
   margin-right: 0.25em;
   width: 0.75em;
-`
+`;
 
 export default Language;

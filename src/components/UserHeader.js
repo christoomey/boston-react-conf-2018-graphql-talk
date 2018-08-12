@@ -17,7 +17,7 @@ const UserHeader = ({user}) => (
   </PaddedRow>
 );
 
-export const USER_HEADER_FRAGMENT = gql`
+UserHeader.fragment = gql`
   fragment UserHeader on User {
     id
     name
@@ -29,6 +29,6 @@ export const USER_HEADER_FRAGMENT = gql`
 
 const PaddedRow = styled(Row)`
   margin-bottom: ${spacing.small};
-`
+`;
 
 export default UserHeader;
