@@ -27,13 +27,16 @@ const QUERY = gql`
       edges {
         cursor
         user: node {
-          ...UserTile
+          ... on User {
+            id
+            login
+            name
+            avatarUrl
+          }
         }
       }
     }
   }
-
-  ${UserTile.fragment}
 `;
 
 export default UserList;
