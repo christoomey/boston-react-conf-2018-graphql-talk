@@ -1,22 +1,37 @@
-import React from 'react';
+import * as React from 'react';
 import gql from 'graphql-tag';
 import {Mutation} from 'react-apollo';
 import styled from 'styled-components';
+import {ToggleStarButton} from '../gqlTypes';
+import {SFCWithQuery} from './SFCWithQuery';
 
-const ToggleStarButton = ({repo}) =>
-  repo.viewerHasStarred ? (
-    <BaseToggleButton
-      title="UnStar"
-      mutation={UNSTAR_MUTATION}
-      repo={repo}
-    />
-  ) : (
-    <BaseToggleButton
-      title="Star"
-      mutation={STAR_MUTATION}
-      repo={repo}
-    />
-  );
+const ToggleStarButton: SFCWithQuery<{
+  repo: ToggleStarButton;
+}> = {
+  component: ({repo}) =>
+    repo.viewerHasStarred ? (
+      <BaseToggleButton
+        title="UnStar"
+        mutation={UNSTAR_MUTATION}
+        repo={repo}
+      />
+    ) : (
+      <BaseToggleButton
+        title="Star"
+        mutation={STAR_MUTATION}
+        repo={repo}
+      />
+    ),
+  fragment: gql`
+    fragment ToggleStarButton on Repository {
+      id
+      viewerHasStarred
+      stargazers {
+        totalCount
+      }
+    }
+  `,
+};
 
 const BaseToggleButton = ({mutation, repo, title}) => (
   <Mutation
@@ -25,7 +40,7 @@ const BaseToggleButton = ({mutation, repo, title}) => (
   >
     {(triggerMutation, {loading}) => (
       <StyledButton
-        onClick={triggerMutation}
+        onClick={() => triggerMutation()}
         disabled={loading}
       >
         {title}
@@ -33,16 +48,6 @@ const BaseToggleButton = ({mutation, repo, title}) => (
     )}
   </Mutation>
 );
-
-ToggleStarButton.fragment = gql`
-  fragment ToggleStarButton on Repository {
-    id
-    viewerHasStarred
-    stargazers {
-      totalCount
-    }
-  }
-`;
 
 const STAR_MUTATION = gql`
   mutation StarRepo($repoId: ID!) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import gql from 'graphql-tag';
 import DefaultQuery from '../components/DefaultQuery';
 import Page from '../components/Page';
@@ -12,15 +12,15 @@ const UserPage = ({match: {params: {login}}}) => (
   <DefaultQuery query={QUERY} variables={{login}}>
     {({data: {user}}) => (
       <Page>
-        <UserHeader user={user} />
+        <UserHeader.component user={user} />
         <Row>
           {user.organizations.nodes.map(org => (
-            <Org key={org.id} org={org} />
+            <Org.component key={org.id} org={org} />
           ))}
         </Row>
         <Grid columns={2}>
           {user.repositories.nodes.map(repo => (
-            <Repo key={repo.id} repo={repo} />
+            <Repo.component key={repo.id} repo={repo} />
           ))}
         </Grid>
       </Page>

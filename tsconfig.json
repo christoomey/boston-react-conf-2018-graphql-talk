@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "jsx": "react",
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "noLib": false,
+    "pretty": true,
+    "removeComments": true,
+    "target": "es6"
+  },
+  "include": ["**/*"],
+  "exclude": ["node_modules"]
+}

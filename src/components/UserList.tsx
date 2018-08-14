@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import gql from 'graphql-tag';
 import DefaultQuery from './DefaultQuery';
 import UserTile from './UserTile';
@@ -11,7 +11,10 @@ const UserList = ({login}) => (
       <div>
         <Grid columns={3}>
           {search.edges.map(({user}) => (
-            <UserTile key={user.id} user={user} />
+            <UserTile.component
+              key={user.id}
+              user={user}
+            />
           ))}
         </Grid>
 
