@@ -3,7 +3,11 @@ import gql from 'graphql-tag';
 import Avatar from './Avatar';
 
 const Org = ({org}) => (
-  <Avatar small src={org.avatarUrl} alt={`${org.name} avatar`} />
+  <Avatar
+    small
+    src={org.avatarUrl}
+    alt={`${org.name} avatar`}
+  />
 );
 
 Org.fragment = gql`

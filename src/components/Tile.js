@@ -8,4 +8,4 @@ const Tile = styled.li`
   margin-bottom: ${spacing.small};
 `;
 
-export default Tile
+export default Tile;

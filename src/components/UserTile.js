@@ -10,10 +10,16 @@ const UserTile = ({user}) => (
   <UnstyledLink to={`/users/${user.login}`}>
     <Tile>
       <Row>
-        <Avatar small src={user.avatarUrl} alt={`${user.login} avatar`} />
+        <Avatar
+          small
+          src={user.avatarUrl}
+          alt={`${user.login} avatar`}
+        />
         <Column>
           <Title>{user.login}</Title>
-          <Subtitle>{user.name !== '' && `(${user.name})`}</Subtitle>
+          <Subtitle>
+            {user.name !== '' && `(${user.name})`}
+          </Subtitle>
         </Column>
       </Row>
     </Tile>

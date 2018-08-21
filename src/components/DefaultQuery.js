@@ -1,7 +1,11 @@
 import React from 'react';
 import {Query} from 'react-apollo';
 
-const DefaultQuery = ({query, variables = {}, children}) => (
+const DefaultQuery = ({
+  query,
+  variables = {},
+  children,
+}) => (
   <Query query={query} variables={variables}>
     {({loading, error, data, fetchMore}) => {
       if (loading)

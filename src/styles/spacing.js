@@ -3,4 +3,4 @@ export default {
   small: '0.5em',
   normal: '1em',
   large: '2em',
-}
+};

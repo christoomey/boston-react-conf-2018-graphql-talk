@@ -8,10 +8,16 @@ import {Title, Subtitle} from './Headings';
 
 const UserHeader = ({user}) => (
   <PaddedRow>
-    <Avatar large src={user.avatarUrl} alt={`${user.login} avatar`} />
+    <Avatar
+      large
+      src={user.avatarUrl}
+      alt={`${user.login} avatar`}
+    />
     <Column>
       <Title>{user.login}</Title>
-      <Subtitle>{user.name || '(name not provided)'}</Subtitle>
+      <Subtitle>
+        {user.name || '(name not provided)'}
+      </Subtitle>
       <p>{user.bio}</p>
     </Column>
   </PaddedRow>

@@ -4,7 +4,8 @@ import {spacing} from '../styles';
 const Grid = styled.ul`
   padding: 0;
   display: grid;
-  grid-template-columns: ${props => templateColumns(props)};
+  grid-template-columns: ${props =>
+    templateColumns(props)};
   grid-gap: ${spacing.small} ${spacing.normal};
 `;
 

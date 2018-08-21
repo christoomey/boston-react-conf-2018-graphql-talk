@@ -14,7 +14,9 @@ const UserPage = ({match: {params: {login}}}) => (
       <Page>
         <UserHeader user={user} />
         <Row>
-          {user.organizations.nodes.map(org => <Org key={org.id} org={org} />)}
+          {user.organizations.nodes.map(org => (
+            <Org key={org.id} org={org} />
+          ))}
         </Row>
         <Grid columns={2}>
           {user.repositories.nodes.map(repo => (

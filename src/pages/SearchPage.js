@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {MarkGithubIcon} from 'react-octicons'
+import {MarkGithubIcon} from 'react-octicons';
 import UserList from '../components/UserList';
 import Page from '../components/Page';
 
@@ -11,13 +11,20 @@ class SearchPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState({login: event.target.querySelector("[name='login']").value});
+    this.setState({
+      login: event.target.querySelector(
+        "[name='login']"
+      ).value,
+    });
   };
 
   render() {
     return (
       <Page>
-        <h2><MarkGithubIcon /> GitHub User Search <MarkGithubIcon /></h2>
+        <h2>
+          <MarkGithubIcon /> GitHub User Search{' '}
+          <MarkGithubIcon />
+        </h2>
         <form onSubmit={this.handleSubmit}>
           <SearchBar type="text" name="login" />
         </form>

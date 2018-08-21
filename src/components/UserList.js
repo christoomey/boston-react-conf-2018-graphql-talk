@@ -10,11 +10,16 @@ const UserList = ({login}) => (
     {({data: {search}, fetchMore, loading}) => (
       <div>
         <Grid columns={3}>
-          {search.edges.map(({user}) => <UserTile key={user.id} user={user} />)}
+          {search.edges.map(({user}) => (
+            <UserTile key={user.id} user={user} />
+          ))}
         </Grid>
 
         {loading || (
-          <LoadMoreButton edges={search.edges} fetchMore={fetchMore} />
+          <LoadMoreButton
+            edges={search.edges}
+            fetchMore={fetchMore}
+          />
         )}
       </div>
     )}
@@ -23,7 +28,12 @@ const UserList = ({login}) => (
 
 const QUERY = gql`
   query UserSearch($login: String!, $cursor: String) {
-    search(first: 12, query: $login, type: USER, after: $cursor) {
+    search(
+      first: 12
+      query: $login
+      type: USER
+      after: $cursor
+    ) {
       edges {
         cursor
         user: node {

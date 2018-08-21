@@ -6,4 +6,4 @@ const UnstyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-export default UnstyledLink
+export default UnstyledLink;

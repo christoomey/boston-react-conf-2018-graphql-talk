@@ -5,15 +5,29 @@ import styled from 'styled-components';
 
 const ToggleStarButton = ({repo}) =>
   repo.viewerHasStarred ? (
-    <BaseToggleButton title="UnStar" mutation={UNSTAR_MUTATION} repo={repo} />
+    <BaseToggleButton
+      title="UnStar"
+      mutation={UNSTAR_MUTATION}
+      repo={repo}
+    />
   ) : (
-    <BaseToggleButton title="Star" mutation={STAR_MUTATION} repo={repo} />
+    <BaseToggleButton
+      title="Star"
+      mutation={STAR_MUTATION}
+      repo={repo}
+    />
   );
 
 const BaseToggleButton = ({mutation, repo, title}) => (
-  <Mutation mutation={mutation} variables={{repoId: repo.id}}>
+  <Mutation
+    mutation={mutation}
+    variables={{repoId: repo.id}}
+  >
     {(triggerMutation, {loading}) => (
-      <StyledButton onClick={triggerMutation} disabled={loading}>
+      <StyledButton
+        onClick={triggerMutation}
+        disabled={loading}
+      >
         {title}
       </StyledButton>
     )}
