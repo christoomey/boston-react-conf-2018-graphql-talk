@@ -7,10 +7,8 @@
   "scripts": {
     "start": "export $(cat .env) && parcel src/index.html",
     "lint": "eslint src",
-    "gql:schema":
-      "apollo-codegen introspect-schema https://api.github.com/graphql --output src/gqlSchema.json --header \"Authorization: Bearer $(cat .env | grep GITHUB_TOKEN | cut -d '=' -f 2)\"",
-    "gql:types":
-      "apollo-codegen generate src/**/*.js --schema src/gqlSchema.json --target typescript --output src/gqlTypes.ts",
+    "gql:schema": "apollo-codegen introspect-schema https://api.github.com/graphql --output src/gqlSchema.json --header \"Authorization: Bearer $(cat .env | grep GITHUB_TOKEN | cut -d '=' -f 2)\"",
+    "gql:types": "apollo-codegen generate src/**/*.js --schema src/gqlSchema.json --target typescript --output src/gqlTypes.ts",
     "gql:full": "yarn run gql:schema && yarn run gql:types"
   },
   "devDependencies": {
@@ -36,6 +34,7 @@
     "apollo-client": "^2.2.7",
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
+    "query-string": "^6.1.0",
     "react": "^16.2.0",
     "react-apollo": "^2.1.0",
     "react-dom": "^16.2.0",

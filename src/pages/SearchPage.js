@@ -1,24 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 import {MarkGithubIcon} from 'react-octicons';
+import queryString from 'query-string';
 import UserList from '../components/UserList';
 import Page from '../components/Page';
 
 class SearchPage extends React.Component {
-  state = {
-    login: '',
-  };
-
   handleSubmit = event => {
     event.preventDefault();
-    this.setState({
-      login: event.target.querySelector(
-        "[name='login']"
-      ).value,
-    });
+    const login = event.target.querySelector(
+      "[name='login']"
+    ).value;
+    if (login === '') {
+      this.props.history.push('/users');
+    } else {
+      this.props.history.push(`/users?login=${login}`);
+    }
   };
 
   render() {
+    const login =
+      queryString.parse(this.props.location.search)
+        .login || '';
+
     return (
       <Page>
         <h2>
@@ -26,9 +30,13 @@ class SearchPage extends React.Component {
           <MarkGithubIcon />
         </h2>
         <form onSubmit={this.handleSubmit}>
-          <SearchBar type="text" name="login" />
+          <SearchBar
+            type="text"
+            name="login"
+            defaultValue={login}
+          />
         </form>
-        <UserList login={this.state.login} />
+        <UserList login={login} />
       </Page>
     );
   }
