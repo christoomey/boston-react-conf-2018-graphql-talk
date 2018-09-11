@@ -33,6 +33,12 @@ const QUERY = gql`
     user(login: $login) {
       ...UserHeader
 
+      organizations(first: 10) {
+        nodes {
+          ...Org
+        }
+      }
+
       repositories(
         first: 10
         isFork: false
@@ -40,12 +46,6 @@ const QUERY = gql`
       ) {
         nodes {
           ...Repo
-        }
-      }
-
-      organizations(first: 10) {
-        nodes {
-          ...Org
         }
       }
     }

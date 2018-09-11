@@ -1,8 +1,8 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import styled from 'styled-components';
 import ToggleStarButton from './ToggleStarButton';
 import {Row} from './Flex';
+import TitleLink from './TitleLink';
 
 const RepoHeader = ({repo}) => (
   <div>
@@ -23,13 +23,6 @@ RepoHeader.fragment = gql`
     ...ToggleStarButton
   }
   ${ToggleStarButton.fragment}
-`;
-
-const TitleLink = styled.a`
-  color: #333;
-  text-decoration: none;
-  font-size: 1.25em;
-  font-weight: 550;
 `;
 
 export default RepoHeader;

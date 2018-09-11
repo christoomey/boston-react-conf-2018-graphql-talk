@@ -8,7 +8,7 @@ import Tile from './Tile';
 
 const UserTile = ({user}) => (
   <UnstyledLink to={`/users/${user.login}`}>
-    <Tile>
+    <Tile full>
       <Row>
         <Avatar
           small

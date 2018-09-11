@@ -6,6 +6,7 @@ const Tile = styled.li`
   border: 1px solid lightgray;
   list-style: none;
   margin-bottom: ${spacing.small};
+  padding: ${props => props.full || spacing.small};
 `;
 
 export default Tile;

@@ -1,9 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import styled from 'styled-components';
-import {spacing} from '../styles';
 import Avatar from './Avatar';
-import {Column, Row} from './Flex';
+import {Column, PaddedRow} from './Flex';
 import {Title, Subtitle} from './Headings';
 
 const UserHeader = ({user}) => (
@@ -31,10 +29,6 @@ UserHeader.fragment = gql`
     login
     avatarUrl
   }
-`;
-
-const PaddedRow = styled(Row)`
-  margin-bottom: ${spacing.small};
 `;
 
 export default UserHeader;

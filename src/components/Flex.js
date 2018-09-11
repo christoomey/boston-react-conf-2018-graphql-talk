@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {spacing} from '../styles';
 
 const Flex = styled.div`
   display: flex;
@@ -9,6 +10,11 @@ const Flex = styled.div`
 
 export const Column = styled(Flex)`
   flex-direction: column;
+  height: 100%;
 `;
 
 export const Row = styled(Flex)``;
+
+export const PaddedRow = styled(Row)`
+  margin-bottom: ${spacing.small};
+`;
