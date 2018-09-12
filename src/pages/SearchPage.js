@@ -8,9 +8,7 @@ import Page from '../components/Page';
 class SearchPage extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
-    const login = event.target.querySelector(
-      "[name='login']"
-    ).value;
+    const login = event.target.querySelector("[name='login']").value;
     if (login === '') {
       this.props.history.push('/users');
     } else {
@@ -20,21 +18,15 @@ class SearchPage extends React.Component {
 
   render() {
     const login =
-      queryString.parse(this.props.location.search)
-        .login || '';
+      queryString.parse(this.props.location.search).login || '';
 
     return (
       <Page>
         <h2>
-          <MarkGithubIcon /> GitHub User Search{' '}
-          <MarkGithubIcon />
+          <MarkGithubIcon /> GitHub User Search <MarkGithubIcon />
         </h2>
         <form onSubmit={this.handleSubmit}>
-          <SearchBar
-            type="text"
-            name="login"
-            defaultValue={login}
-          />
+          <SearchBar type="text" name="login" defaultValue={login} />
         </form>
         <UserList login={login} />
       </Page>

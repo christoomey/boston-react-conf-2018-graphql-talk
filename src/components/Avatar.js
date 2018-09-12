@@ -15,8 +15,8 @@ const size = ({tiny, small, large}) => {
     return 3;
   } else if (large) {
     return 10;
+    // eslint-disable-next-line
   } else {
-    // eslint-disable-line
     return 3;
   }
 };

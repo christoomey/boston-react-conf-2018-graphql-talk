@@ -17,9 +17,7 @@ const UserTile = ({user}) => (
         />
         <Column>
           <Title>{user.login}</Title>
-          <Subtitle>
-            {user.name && `(${user.name})`}
-          </Subtitle>
+          <Subtitle>{user.name && `(${user.name})`}</Subtitle>
         </Column>
       </Row>
     </Tile>

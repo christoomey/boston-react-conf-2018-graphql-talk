@@ -14,15 +14,11 @@ const withLoading = WrappedComponent => {
 };
 
 const getDisplayName = WrappedComponent =>
-  WrappedComponent.displayName ||
-  WrappedComponent.name ||
-  'Component';
+  WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
 const setDisplayName = (hoc, WrappedComponent) => {
   // eslint-disable-next-line no-param-reassign
-  hoc.displayName = `${hoc.name}(${getDisplayName(
-    WrappedComponent
-  )})`;
+  hoc.displayName = `${hoc.name}(${getDisplayName(WrappedComponent)})`;
 };
 
 export default withLoading;

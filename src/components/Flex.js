@@ -3,9 +3,7 @@ import {spacing} from '../styles';
 
 const Flex = styled.div`
   display: flex;
-  ${props =>
-    props.spaceBetween &&
-    'justify-content: space-between'};
+  ${props => props.spaceBetween && 'justify-content: space-between'};
 `;
 
 export const Column = styled(Flex)`

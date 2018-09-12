@@ -8,26 +8,20 @@ const ToggleStarButton = ({repo}) =>
     <BaseToggleButton
       title="UnStar"
       mutation={UNSTAR_MUTATION}
-      repo={repo}
+      repoId={repo.id}
     />
   ) : (
     <BaseToggleButton
       title="Star"
       mutation={STAR_MUTATION}
-      repo={repo}
+      repoId={repo.id}
     />
   );
 
-const BaseToggleButton = ({mutation, repo, title}) => (
-  <Mutation
-    mutation={mutation}
-    variables={{repoId: repo.id}}
-  >
+const BaseToggleButton = ({mutation, repoId, title}) => (
+  <Mutation mutation={mutation} variables={{repoId}}>
     {(triggerMutation, {loading}) => (
-      <Button
-        onClick={triggerMutation}
-        disabled={loading}
-      >
+      <Button onClick={triggerMutation} disabled={loading}>
         {title}
       </Button>
     )}
