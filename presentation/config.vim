@@ -50,13 +50,14 @@ call VipRegister(
       \     'src/components/Repo.js': [
       \       { 'ranges': [[17, 26]], 'cursorLine': 17 },
       \       { 'ranges': [[20, 21]], 'cursorLine': 20 },
+      \       { 'ranges': [[21, 21]], 'cursorLine': 21 },
       \     ],
       \     'src/components/RepoStats.js': [
-      \       { 'ranges': [[21, 34]], 'cursorLine': 21 },
+      \       { 'ranges': [[22, 33]], 'cursorLine': 22 },
       \       { 'ranges': [[29, 29]], 'cursorLine': 29 },
       \     ],
       \     'src/components/Language.js': [
-      \       { 'ranges': [[12, 18]], 'cursorLine': 12 },
+      \       { 'ranges': [[13, 17]], 'cursorLine': 13 },
       \     ],
       \     'src/components/RepoHeader.js': [
       \       { 'ranges': [[11, 11]], 'cursorLine': 11 },
