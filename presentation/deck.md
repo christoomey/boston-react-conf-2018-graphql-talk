@@ -4,6 +4,16 @@
 
 ---
 
+# Chris Toomey
+
+![inline](images/thoughtbot.png)
+
+## @christoomey
+
+## @_bikeshed
+
+---
+
 [.build-lists: true]
 
 ![inline](images/graphql-logo.png)
