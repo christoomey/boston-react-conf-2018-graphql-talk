@@ -34,7 +34,7 @@ This project uses [yarn][] to manage dependencies.
 
 ### GitHub Token
 
-You'll need to to generate a [GitHub personal access token][] with `repo`
+You'll need to to generate a [GitHub personal access token][] with `repo` and `read:org` 
 scopes. Once generated, add it to a `.env` file:
 
 ```sh
