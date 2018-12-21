@@ -6,7 +6,7 @@ import {Row} from './Flex';
 
 const RepoStats = ({repo}) => (
   <Row spaceBetween>
-    <Language language={repo.primaryLanguage} />
+    { repo.primaryLanguage && <Language language={repo.primaryLanguage} /> }
     <span>
       <ForkedIcon />
       {repo.forkCount}
