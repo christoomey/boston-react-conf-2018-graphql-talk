@@ -1,5 +1,10 @@
 # React + GraphQL Sample App
 
+You can view the recording from Boston React Conf 2018 where I presented the
+talk associated with this repo:
+
+[![boston react conf talk video](https://img.youtube.com/vi/Qsoj4s_Ml6s/0.jpg)](https://www.youtube.com/watch?v=Qsoj4s_Ml6s)
+
 This sample app demonstrates how to integrate React app with a GraphQL API. The
 app uses the [Apollo framework][] along with its stellar [React bindings][] to
 interact with the [GitHub GraphQL API][]. In addition, the focus was on the
